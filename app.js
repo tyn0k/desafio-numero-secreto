@@ -26,6 +26,15 @@ function agregarAmigo() {
         alert("Por favor, escribe un nombre");
         return;
     }
+
+    // verificar que no sean solo numeros
+    if(/^[0-9\s\-]+$/.test(nuevoAmigo)){
+        limpiarCaja();
+        alert("El nombre no puede contener solo números, espacios o guiones. Debe incluir al menos una letra.");
+        return;
+    }
+
+    
     console.log(typeof(nuevoAmigo));
     console.log(nuevoAmigo);
     // agregar el nombre a la lista
