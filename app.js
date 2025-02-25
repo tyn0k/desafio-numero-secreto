@@ -66,13 +66,14 @@ function agregarAmigo() {
         alert(`El nombre no puede repetirse, se sugiere agregar un número como ${varianteN} o una letra como ${varianteL}`);
         return;
     }
-    //mostrar en consola
-    console.log(typeof(nuevoAmigo));
-    console.log(nuevoAmigo);
-    console.log(listaAmigoSecreto);
 
     // Si el nombre es único, agregarlo a la lista
     listaAmigoSecreto.push(nuevoAmigo);
     limpiarCaja();
     mostrarListaEnPagina();
+    
+    //mostrar en consola
+    console.log(typeof(nuevoAmigo));
+    console.log(nuevoAmigo);
+    console.log(listaAmigoSecreto);
 }
