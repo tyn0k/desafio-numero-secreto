@@ -15,6 +15,63 @@
     box-sizing: border-box;
 }
 
+/* Ocultar elementos con la clase hidden */
+.hidden {
+    display: none !important;
+}
+
+/* Estilos para los botones */
+.button-draw {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cursor tipo puntero */
+    display: inline-flex; /* Para alinear ícono y texto */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 8px; /* Espacio entre ícono y texto */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 5px; /* Margen entre botones */
+}
+
+.button-draw img {
+    width: 20px; /* Tamaño del ícono */
+    height: 20px; /* Tamaño del ícono */
+}
+
+/* Estilos para la lista de nombres */
+.name-list, .result-list {
+    list-style-type: none; /* Quitar viñetas */
+    padding: 0; /* Quitar padding predeterminado */
+}
+
+.name-list li, .result-list li {
+    padding: 8px; /* Espaciado interno */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+}
+
+/* Estilos para el input */
+.input-name {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Estilos para el botón de añadir */
+.button-add {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 body {
     height: 100vh;
     background-color: var(--color-primary);
