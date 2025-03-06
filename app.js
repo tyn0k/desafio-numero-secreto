@@ -1,7 +1,3 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-// Declarar e inicializar la variable asignaciones como un Map
-let asignaciones = new Map();
-
 let listaAmigoSecreto = [];
 
 function limpiarCaja() {
@@ -9,27 +5,13 @@ function limpiarCaja() {
 }
 
 function mostrarListaEnPagina() {
-    // Obtener elemento ul donde se muestra la lista
     let listaAmigos = document.getElementById('listaAmigos');
-    // Limpiar el contenido actual
     listaAmigos.innerHTML = '';
 
-    // Recorrer lista actual de amigos y agregar un ul por cada uno
     for (let i = 0; i < listaAmigoSecreto.length; i++) {
-        let amigo = listaAmigoSecreto[i]; // Obtener el nombre
-        listaAmigos.innerHTML += `<li>${amigo}</li>`; // Agregar el nombre como li
+        let amigo = listaAmigoSecreto[i];
+        listaAmigos.innerHTML += `<li>${amigo}</li>`;
     }
-    // Actualizar el selector de sorteador
-    actualizarSelectorSorteador();
-}
-
-function actualizarSelectorSorteador() {
-    let selector = document.getElementById('sorteador');
-    selector.innerHTML = '<option value="" disabled selected>Elige tu nombre</option>';
-
-    listaAmigoSecreto.forEach((nombre) => {
-        selector.innerHTML += `<option value="${nombre}">${nombre}</option>`;
-    });
 }
 
 function sugerirVariante(nombre) {
@@ -81,32 +63,16 @@ function agregarAmigo() {
     listaAmigoSecreto.push(nuevoAmigo);
     limpiarCaja();
     mostrarListaEnPagina();
-
-    // Mostrar en consola
-    console.log(typeof(nuevoAmigo));
-    console.log(nuevoAmigo);
-    console.log(listaAmigoSecreto);
 }
 
 function sortearAmigo() {
     if (listaAmigoSecreto.length < 2) {
         alert("Debes agregar al menos 2 nombres para realizar el sorteo.");
         return;
-    } else if (listaAmigoSecreto.length % 2 !== 0) {
-        alert("El número de participantes es impar. No se puede realizar un sorteo justo. Agrega o elimina un nombre.");
-        return;
     }
 
-    // Obtener el nombre del sorteador
-    let sorteador = document.getElementById('sorteador').value;
-
-    if (!sorteador) {
-        alert("Por favor, selecciona tu nombre antes de sortear.");
-        return;
-    }
-
-    // Crear una copia de la lista excluyendo al sorteador
-    let listaSorteo = listaAmigoSecreto.filter(nombre => nombre !== sorteador);
+    // Crear una copia de la lista para el sorteo
+    let listaSorteo = [...listaAmigoSecreto];
 
     // Mezclar la lista aleatoriamente
     for (let i = listaSorteo.length - 1; i > 0; i--) {
@@ -114,69 +80,40 @@ function sortearAmigo() {
         [listaSorteo[i], listaSorteo[j]] = [listaSorteo[j], listaSorteo[i]];
     }
 
-    // Asignar amigos secretos
-    asignaciones.clear(); // Limpiar asignaciones anteriores
+    // Asignar amigos secretos asegurándose de que nadie se asigne a sí mismo
+    let resultadoSorteo = [];
     for (let i = 0; i < listaAmigoSecreto.length; i++) {
         let amigoActual = listaAmigoSecreto[i];
+        let amigoSecreto = listaSorteo[i];
 
-        if (amigoActual === sorteador) {
-            // El sorteador recibe el primer nombre de la lista mezclada
-            asignaciones.set(amigoActual, listaSorteo[0]);
-            listaSorteo.splice(0, 1); // Eliminar el nombre asignado
-        } else {
-            // Los demás reciben un nombre aleatorio de la lista restante
-            let indiceAleatorio = Math.floor(Math.random() * listaSorteo.length);
-            asignaciones.set(amigoActual, listaSorteo[indiceAleatorio]);
-            listaSorteo.splice(indiceAleatorio, 1); // Eliminar el nombre asignado
+        // Si el amigo secreto es el mismo que el amigo actual, intercambiar con otro
+        if (amigoSecreto === amigoActual) {
+            let indiceIntercambio = (i + 1) % listaSorteo.length; // Intercambiar con el siguiente
+            [listaSorteo[i], listaSorteo[indiceIntercambio]] = [listaSorteo[indiceIntercambio], listaSorteo[i]];
+            amigoSecreto = listaSorteo[i];
         }
+
+        resultadoSorteo.push(`${amigoActual} ➔ ${amigoSecreto}`);
     }
 
-    // Mostrar solo el amigo secreto del sorteador
-    let resultadoElement = document.getElementById('resultadoSorteo');
-    let amigoSecreto = asignaciones.get(sorteador);
-    resultadoElement.innerHTML = `<p>¡Tu amigo secreto es: <strong>${amigoSecreto}</strong>!</p>`;
+    // Mostrar el resultado en la página
+    let resultadoElement = document.getElementById('resultado');
+    resultadoElement.innerHTML = '';
 
-    // Cambiar el botón "Sortear" a "Revisar amigo secreto"
-    let botonSortear = document.getElementById('botonSortear');
-    botonSortear.innerHTML = `<img src="assets/play_circle_outline.png" alt="Ícono para revisar"> Revisar amigo secreto`;
-    botonSortear.setAttribute('onclick', 'revisarAmigoSecreto()');
+    resultadoSorteo.forEach((item) => {
+        resultadoElement.innerHTML += `<li>${item}</li>`;
+    });
 
-    // Mostrar el botón "Reiniciar juego"
-    let botonReiniciar = document.getElementById('botonReiniciar');
-    botonReiniciar.style.display = 'inline-block';
+    // Mostrar el botón de reiniciar lista
+    document.getElementById('botonReiniciarLista').classList.remove('hidden');
 }
 
-function revisarAmigoSecreto() {
-    // Obtener el nombre del sorteador
-    let sorteador = document.getElementById('sorteador').value;
-
-    if (!sorteador) {
-        alert("Por favor, selecciona tu nombre antes de revisar.");
-        return;
-    }
-
-    // Mostrar el amigo secreto del sorteador
-    let resultadoElement = document.getElementById('resultadoSorteo');
-    let amigoSecreto = asignaciones.get(sorteador);
-    resultadoElement.innerHTML = `<p>¡Tu amigo secreto es: <strong>${amigoSecreto}</strong>!</p>`;
-}
-
-function reiniciarJuego() {
-    // Reiniciar la lista y las asignaciones
+function reiniciarLista() {
+    // Limpiar la lista de amigos y los resultados
     listaAmigoSecreto = [];
-    asignaciones.clear();
+    document.getElementById('resultado').innerHTML = '';
+    mostrarListaEnPagina();
 
-    // Limpiar la interfaz
-    document.getElementById('listaAmigos').innerHTML = '';
-    document.getElementById('resultadoSorteo').innerHTML = '';
-    limpiarCaja();
-
-    // Restaurar el botón "Sortear"
-    let botonSortear = document.getElementById('botonSortear');
-    botonSortear.innerHTML = `<img src="assets/play_circle_outline.png" alt="Ícono para sortear"> Sortear amigo`;
-    botonSortear.setAttribute('onclick', 'sortearAmigo()');
-
-    // Ocultar el botón "Reiniciar juego"
-    let botonReiniciar = document.getElementById('botonReiniciar');
-    botonReiniciar.style.display = 'none';
+    // Ocultar el botón de reiniciar lista
+    document.getElementById('botonReiniciarLista').classList.add('hidden');
 }
