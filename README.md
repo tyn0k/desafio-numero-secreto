@@ -51,3 +51,56 @@ El sistema está diseñado para evitar errores comunes:
 ---
 
 ## 📂 Estructura del proyecto
+amigo-secreto/
+├── index.html # Archivo principal (HTML)
+├── style.css # Estilos (CSS)
+├── app.js # Lógica del juego (JavaScript)
+├── assets/ # Carpeta de imágenes (íconos, etc.)
+└── README.md # Este archivo
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **HTML**: Estructura de la página.
+- **CSS**: Estilos y diseño responsive.
+- **JavaScript**: Lógica del sorteo y validaciones.
+- **GitHub**: Alojamiento del proyecto.
+
+---
+
+## 🌟 Cómo contribuir
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, sigue estos pasos:
+
+1. Haz un **fork** del repositorio.
+2. Crea una rama con tu nueva funcionalidad (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
+5. Abre un **Pull Request** y describe tus cambios.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia **MIT**. Para más detalles, consulta el archivo [LICENSE](LICENSE).
+
+---
+
+## 🙌 Créditos
+
+- **Desarrollado por**: [Tu nombre](https://github.com/tyn0k)
+- **Inspiración**: Eventos familiares y amigos.
+
+---
+
+## 📬 Contacto
+
+Si tienes preguntas o sugerencias, no dudes en contactarme:
+
+- ✉️ [c.paillacan.gonzalez@gmail.com](mailto:c.paillacan.gonzalez@gmail.com)
+- 🌐 [Mi portfolio](https://github.com/tyn0k)
+
+---
+
+¡Gracias por visitar este proyecto! Espero que te diviertas organizando tu próximo **Amigo Secreto**. 🎉
