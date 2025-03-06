@@ -51,13 +51,14 @@ El sistema está diseñado para evitar errores comunes:
 ---
 
 ## 📂 Estructura del proyecto
+```
 amigo-secreto/
 ├── index.html # Archivo principal (HTML)
 ├── style.css # Estilos (CSS)
 ├── app.js # Lógica del juego (JavaScript)
 ├── assets/ # Carpeta de imágenes (íconos, etc.)
 └── README.md # Este archivo
-
+```
 ---
 
 ## 🛠️ Tecnologías utilizadas
@@ -89,7 +90,7 @@ Este proyecto está bajo la licencia **MIT**. Para más detalles, consulta el ar
 
 ## 🙌 Créditos
 
-- **Desarrollado por**: [Tu nombre](https://github.com/tyn0k)
+- **Desarrollado por**: [tyn0k](https://github.com/tyn0k)
 - **Inspiración**: Eventos familiares y amigos.
 
 ---
