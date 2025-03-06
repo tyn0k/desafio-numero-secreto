@@ -70,18 +70,6 @@ amigo-secreto/
 
 ---
 
-## 🌟 Cómo contribuir
-
-¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, sigue estos pasos:
-
-1. Haz un **fork** del repositorio.
-2. Crea una rama con tu nueva funcionalidad (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva funcionalidad'`).
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
-5. Abre un **Pull Request** y describe tus cambios.
-
----
-
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia **MIT**. Para más detalles, consulta el archivo [LICENSE](LICENSE).
